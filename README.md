@@ -15,7 +15,7 @@ It is worth noting that Figure 1 was created by running the [SMART](http://arxiv
 
 Data
 -------
-The LOWCAT database (which Section 2 of the paper analyses) is available freely on [Figshare](https://figshare.com/articles/HELCATS_LOWCAT/4970222).
+The LOWCAT database (which Section 2 of the paper analyses) is available freely on [Figshare](https://figshare.com/articles/HELCATS_LOWCAT/4970222), however ``data/lowcat.json`` is also included here for completeness.
 
 FLARECAST data (which Section 3 of the paper analyses) is freely available via the flarecast.eu [API](http://api.flarecast.eu). The data extracted from this database as of October 2017 has been provided in ``data/flarecast_list.csv``, used to create the relevant histograms of properties in Section 3.
 
