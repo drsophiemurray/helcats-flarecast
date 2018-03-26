@@ -7,17 +7,19 @@ This repository contains the code and data used to compare the EU FP7 HELCATS an
 
 Code
 -------
-lowcat_plots.py was written by S. A. Murray and includes code to create Figures 2 - ?.
-LOWCAT database is available at https://figshare.com/articles/HELCATS_LOWCAT/4970222. Extra data from the FLARECAST database needed to run the code is also provided in /data/? This is the FLARECAST API as of Octiber 2017 ().
+The LOWCAT catalogue was created with an IDL algorithm originally written by P. Zucca and modified by S.A. Murray. The code repositry is available on [Github](https://github.com/sophiemurray/lowcat). ``lowcat_plots.py`` was written by S.A. Murray to anlayse the LOWCAT catalogue properties to create Figures 3, 6, and 7, as well as the histograms in Figures 4, 5, 10, and 11.
 
-The LOWCAT algoritm itself is at:
+The work to compare FLARECAST data to the HELCATS efforts was undertaken by J. A. Guerra, with ``HELC_FL_TS.py`` and ``HELCATS_match_FLARECAST_1.py`` relevant to the results outlined in Section 3 of the paper.
 
-HELC_FL_TS.py and HELCATS_match_FLARECAST_1.py was written by J. A. Guerra and includes code to create Figures ? -?.
-
-It is worth noting that Figure 1 was created by running the SMART algorithm developed by P. A. Higgins, and IDL code which is also available on GitHub. A newer python version is also now available here.
+It is worth noting that Figure 1 was created by running the [SMART](http://arxiv.org/abs/1006.5898) algorithm originally developed by P. A. Higgins, and IDL code which is also available on [GitHub](https://github.com/pohuigin/smart_library).
 
 Data
 -------
+The LOWCAT database (which Section 2 of the paper analyses) is available freely on [Figshare](https://figshare.com/articles/HELCATS_LOWCAT/4970222).
+
+FLARECAST data (which Section 3 of the paper analyses) is freely available via the flarecast.eu [API](http://api.flarecast.eu). The data extracted from this database as of October 2017 has been provided in ``data/flarecast_list.csv``, used to create the relevant histograms of properties in Section 3.
+
 
 License
 -------
+The content of this project is licensed under the [Creative Commons Attribution 4.0 license](https://creativecommons.org/licenses/by/4.0/), and the underlying source code used to format and display that content is licensed under the [MIT license](https://opensource.org/licenses/mit-license.php). Please reference the Solar Physics publication in all instances, the Figshare database if using the LOWCAT catalogue, and relevant GitHub repositries if using the code.
