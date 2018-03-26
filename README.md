@@ -11,7 +11,7 @@ The LOWCAT catalogue was created with an IDL algorithm originally written by P. 
 
 The work to compare FLARECAST data to the HELCATS efforts was undertaken by J. A. Guerra, with ``HELC_FL_TS.py`` and ``HELCATS_match_FLARECAST_1.py`` relevant to the results outlined in Section 3 of the paper.
 
-It is worth noting that Figure 1 was created by running the [SMART](http://arxiv.org/abs/1006.5898) algorithm originally developed by P. A. Higgins, and IDL code which is also available on [GitHub](https://github.com/pohuigin/smart_library).
+It is worth noting that Figure 1 was created by running the [SMART](http://arxiv.org/abs/1006.5898) algorithm originally developed by P. A. Higgins, an IDL code which is also available on [GitHub](https://github.com/pohuigin/smart_library).
 
 Data
 -------
