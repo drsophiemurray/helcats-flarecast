@@ -47,6 +47,9 @@ def main():
     """Loads the LOWCAT catalogue,
     fixes some data formats,
     then starts creating the plots for the paper"""
+    # Load data
+    #============================
+
     # Load the .sav file
     savfile = readsav(CAT_FOLDER + LOWCAT_FILE)
 
@@ -64,6 +67,7 @@ def main():
     csvdata = pd.read_csv(CAT_FOLDER + FLARECAST_FILE)
 
     # Create Appendix histograms
+    #============================
     cf.set_config_file(offline=False, world_readable=True, theme='pearl')
 
     # CME and flare properties
@@ -89,7 +93,7 @@ def main():
                                         'total (FC data.sharp kw.usflux)', 'max (FC data.sharp kw.jz)',
                                         'max (FC data.sharp kw.hgradbh)']]
     df_flarecast_hists_sharp.iplot(kind='histogram', subplots=True, shape=(4, 2),
-                                   filename='fcast_hist_final_sharp',
+                                   filename='fcast_hist_sharp',
                                    histnorm='percent')
 
     # Other FLARECAST properties
@@ -97,14 +101,17 @@ def main():
                                   'Ising Energy', 'Abs Tot Dedt',
                                   'Tot L Over Hmin', 'Alpha']]
     df_flarecast_hists.iplot(kind='histogram', subplots=True, shape=(3, 2),
-                             filename='fcast_hist_final0',
+                             filename='fcast_hist',
                              histnorm='percent')
 
 
-    # Figure 4: SRS area vs GOES flux with Hale Class
+    # Main figures
+    #============================
+
+    # Figure 6: SRS area vs GOES flux with Hale Class
     srs_area_complexity(df=df)
 
-    # Figure 5 top: GOES flux and WLSG vs CME speed. Colourbar shows angular width (halo)
+    # Figure 7 top: GOES flux and WLSG vs CME speed. Colourbar shows angular width (halo)
     plotly_double(x1data = np.log10(df['FL_GOES'].astype('float64')),  x1title = 'GOES Flux [Wm-2]',
                   x2data = df['SMART_WLSG'].astype('float64'), x2title='WLsg [G/Mm]',
                   y1data = df['COR2_V'].astype('float64'), y1title = 'CME Speed [ms<sup>-1</sup>]',
@@ -123,7 +130,7 @@ def main():
                                [1.0, 'rgb(249,210,41)']]
                   ) #'Viridis'
 
-    # Figure 5 bottom: Bmin.max, Total area and flux, PSL length, and R value vs CME speed. Colours show flare class.
+    # Figure 7 bottom: Bmin.max, Total area and flux, PSL length, and R value vs CME speed. Colours show flare class.
     plotly_multi(x1data = np.log10(np.abs(df['SMART_BMIN'].astype('float64'))),  x1title = 'Bmin [G]',
                  x2data = np.log10(df['SMART_BMAX'].astype('float64')), x2title = 'Bmax [G]',
                  x3data = np.log10(df['SMART_TOTAREA'].astype('float64')), x3title='Total area [m.s.h]',
@@ -135,7 +142,7 @@ def main():
                  weightdata = '10',
                  colourdata = np.log10(df['FL_GOES'].astype('float64')), colourdata_title = 'GOES Flux [Wm-2]',
                  colourdata_max = -3, colourdata_min = -7, colourdata_step = 1,
-                 filedata = 'smart_properties_paper_log10',
+                 filedata = 'smart_properties',
                  colourscale=[[0, 'rgb(54,50,153)'],
                               [0.25, 'rgb(54,50,153)'],
                               [0.25, 'rgb(17,123,215)'],
