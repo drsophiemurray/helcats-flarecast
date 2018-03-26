@@ -14,7 +14,7 @@ Python 3.6.1 |Anaconda custom (x86_64)| (default, May 11 2017, 13:04:09)
 
 Description:
 ------------
-Code used to create Figures 3, 4, and 5, as well as histograms in the Appendix, in HELCATS-FLARECAST paper.
+Code used to create Figures 3, 6, and 7 as well as histograms (Figures 4, 5, 10, and 11) in HELCATS-FLARECAST paper.
 
 Notes:
 ------
@@ -25,7 +25,8 @@ Plotly was further used to create the figures as presented in the paper
 '''
 
 CAT_FOLDER = '/Users/sophie/Dropbox/lowcat/results/'
-SAV_FILE = 'lowcat.sav'
+LOWCAT_FILE = 'lowcat.sav'
+FLARECAST_FILE = 'flarecast_list.csv'
 
 import numpy as np
 import datetime as dt
@@ -43,11 +44,11 @@ mpl.rc('legend', fontsize = 8)
 mpl.rc('lines', linewidth = 1.5)
 
 def main():
-    """Loads the LOWCAT catalogue, 
+    """Loads the LOWCAT catalogue,
     fixes some data formats,
     then starts creating the plots for the paper"""
     # Load the .sav file
-    savfile = readsav(CAT_FOLDER+SAV_FILE)
+    savfile = readsav(CAT_FOLDER + LOWCAT_FILE)
 
     # Fix some of the data into a format that is more suitable
     outstr = fix_data(savfile['outstr'])
@@ -60,7 +61,7 @@ def main():
     df['COR2_DURATION'] = calculate_flare_duration(df['COR2_TS'], df['COR2_TF'])
 
     # Load Jordan's FLARECAST data
-    csvdata = pd.read_csv(CAT_FOLDER+'flarecast_list.csv') #('fcastexc.csv')
+    csvdata = pd.read_csv(CAT_FOLDER + FLARECAST_FILE)
 
     # Create Appendix histograms
     cf.set_config_file(offline=False, world_readable=True, theme='pearl')
@@ -490,4 +491,3 @@ def plotly_multi(x1data, x1title,
 
 if __name__ == '__main__':
     main()
-
