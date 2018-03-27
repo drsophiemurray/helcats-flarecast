@@ -24,13 +24,18 @@ Plotly was further used to create the figures as presented in the paper
 
 '''
 
-CAT_FOLDER = '/Users/sophie/Dropbox/lowcat/results/'
+CAT_FOLDER = '/Users/sophie/Documents/GitHub/helcats-flarecast/data/'
 LOWCAT_FILE = 'lowcat.sav'
 FLARECAST_FILE = 'flarecast_list.csv'
+LOC_FILE = 'flare_ar_loc.sav'
+AIA_FILE = 'aia_sample.fits'
 
 import numpy as np
 import datetime as dt
 from scipy.io.idl import readsav
+import sunpy.map
+import astropy.units as u
+import sunpy.wcs
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib as mpl
@@ -65,6 +70,13 @@ def main():
 
     # Load Jordan's FLARECAST data
     csvdata = pd.read_csv(CAT_FOLDER + FLARECAST_FILE)
+
+    # Load location info
+    locdata = readsav(CAT_FOLDER + LOC_FILE)
+
+    # Create AR and flare location figure
+    #============================
+    ar_flare_locations(locdata)
 
     # Create Appendix histograms
     #============================
@@ -103,7 +115,6 @@ def main():
     df_flarecast_hists.iplot(kind='histogram', subplots=True, shape=(3, 2),
                              filename='fcast_hist',
                              histnorm='percent')
-
 
     # Main figures
     #============================
@@ -153,9 +164,57 @@ def main():
                               [1.0, 'rgb(249,210,41)']]
                  )
 
+def ar_flare_locations(locdata):
+    """Presenting the locations of all numbered ARs and flare peaks
+    in the LOWCAT catalogue. The points are plotted on sample AIA sunpy data
+    which has been provided (alternatively could use the sunpy AIA data sample).
+    """
+    # Load a sample map
+    map = sunpy.map.Map(CAT_FOLDER + AIA_FILE)
+    map.data[:,:]=[500.]
+    # Plot the points on map
+    location_plot(map,
+                  locdata['ar_colors'], locdata['ar_latlon'],
+                  'AR', 'ar_loc.eps')
+    location_plot(map,
+                  locdata['flare_colors'], locdata['flare_latlon'],
+                  'Flare', 'ar_loc.eps')
+
+
+def location_plot(map, colors, loc, title, filename):
+    """Creating the plots for ar_flare_locations,
+    by plotting the map, drawing a grid over it, and then overplotting
+    the point in Viridis
+    """
+    # Some needed parameters
+    jb0 = map.heliographic_latitude.value * u.deg
+    cm = plt.cm.get_cmap('viridis')
+    # Set up plot
+    fig, ax = plt.subplots()
+    map.plot(title = '', cmap = 'Blues')
+    map.draw_grid(color = 'k', lw = 0.5)
+    # Overplot points
+    for i in range(len(loc)):
+        sc = sunpy.wcs.convert_hg_hpc(loc[i][1], loc[i][0],
+                                      b0_deg=jb0, l0_deg=0, angle_units='arcsec')
+        plt.scatter(sc[0], sc[1], c=colors[i],
+                    s=50, cmap=cm,
+                    vmin=min(colors), vmax=max(colors),
+                    linewidth=0.0)
+    # Prettify
+    plt.title(title)
+    cbar = plt.colorbar(ticks=[0, 127.5, 255])
+    cbar.ax.set_yticklabels(['2007-05-17', '2012-07-27', '2016-12-07'])
+    plt.ylim(map.yrange.value)
+    plt.xlim(map.xrange.value)
+    plt.savefig(filename)
+    plt.close()
+
+
 def fix_data(outstr):
     """Some data in the catalogue are in an unfortunate format.
-    Here they are converted to something useful for plotting purposes"""
+    Here they are converted to something useful for plotting purposes
+    """
     # Define halo event ranges as integers as per the CACTUS database
     outstr["cor2_halo"][np.where(outstr["cor2_width"] < 120. )] = 1.
     outstr["cor2_halo"][np.where(outstr["cor2_width"] > 120.) and np.where(outstr["cor2_width"] > 270.)] = 2.
@@ -192,7 +251,7 @@ def goes_string2mag(goes):
     else:
         goesclass = list(goes)[0]
         mag = float("".join(list(goes)[1:4]))
-        #Combine to Wm^-2
+        # Combine to Wm^-2
         if goesclass == 'A':
             output = mag * 1.0e-8
         elif goesclass == 'B':
@@ -300,6 +359,7 @@ def plotly_double(x1data, x1title,
                   colourdata_max, colourdata_min, colourdata_step,
                   filedata, colourscale):
     """Make multi subplots in plotly
+    (in this case a 2x2)
     """
     trace1 = get_plotly_trace(x1data, y1data,
                               weightdata, colourdata, colourdata_title,
@@ -365,6 +425,7 @@ def plotly_multi(x1data, x1title,
                  colourdata_max, colourdata_min, colourdata_step,
                  filedata, colourscale):
     """Make multi subplots in plotly
+    (in this case a 6x6)
     """
     trace1 = get_plotly_trace(x1data, y1data,
                               weightdata, colourdata, colourdata_title,
