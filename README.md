@@ -19,6 +19,7 @@ The LOWCAT database (which Section 2 of the paper analyses) is available freely 
 
 FLARECAST data (which Section 3 of the paper analyses) is freely available via the flarecast.eu [API](http://api.flarecast.eu). The data extracted from this database as of October 2017 has been provided in ``data/flarecast_list.csv``, used to create the relevant histograms of properties in Section 3.
 
+In order to create Figure 3, some location information was extracted from the LOWCAT database. This has been provided at ``/data/flare_ar_loc.sav`` so that the code can be run with it, as well as a sample fits file that is used as a background map for the figure.
 
 License
 -------
