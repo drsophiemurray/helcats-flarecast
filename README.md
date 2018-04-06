@@ -3,7 +3,7 @@ helcats-flarecast
 
 *Code used to analyse data for the HELCATS-FLARECAST paper*
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1207988.svg)](https://doi.org/10.5281/zenodo.1207988)
+[![DOI](https://zenodo.org/badge/126829901.svg)](https://zenodo.org/badge/latestdoi/126829901)
 
 This repository contains the code and data used to compare the EU FP7 HELCATS and EU H2020 FLARECAST databases for the 2018 Solar Physics publication, Connecting Coronal Mass Ejections to Their Solar Active Region Sources: Combining Results from the HELCATS and FLARECAST Projects (doi: 10.1007/s11207-018-1287-4). The post-print of the paper is freely available on [arxiv](https://arxiv.org/abs/1803.06529).
 
