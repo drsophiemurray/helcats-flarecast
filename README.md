@@ -5,7 +5,28 @@ helcats-flarecast
 
 [![DOI](https://zenodo.org/badge/126829901.svg)](https://zenodo.org/badge/latestdoi/126829901)
 
-This repository contains the code and data used to compare the EU FP7 HELCATS and EU H2020 FLARECAST databases for the 2018 Solar Physics publication, Connecting Coronal Mass Ejections to Their Solar Active Region Sources: Combining Results from the HELCATS and FLARECAST Projects (doi: 10.1007/s11207-018-1287-4). The post-print of the paper is freely available on [arxiv](https://arxiv.org/abs/1803.06529).
+This repository contains the code and data used to compare the EU FP7 HELCATS and EU H2020 FLARECAST databases for the 2018 Solar Physics publication, Connecting Coronal Mass Ejections to Their Solar Active Region Sources: Combining Results from the HELCATS and FLARECAST Projects (doi: 10.1007/s11207-018-1287-4). The post-print of the paper is freely available on [arxiv](https://arxiv.org/abs/1803.06529), and ADS BibTex entry is below for convenience:
+
+    @ARTICLE{Murray2018,
+        author = {{Murray}, S.~A. and {Guerra}, J.~A. and {Zucca}, P. and {Park}, S.-H. and
+        {Carley}, E.~P. and {Gallagher}, P.~T. and {Vilmer}, N. and
+        {Bothmer}, V.},
+        title = "{Connecting Coronal Mass Ejections to Their Solar Active Region Sources: Combining Results from the HELCATS and FLARECAST Projects}",
+        journal = {\solphys},
+        archivePrefix = "arXiv",
+        eprint = {1803.06529},
+        primaryClass = "astro-ph.SR",
+        keywords = {Active regions, magnetic fields, Coronal mass ejections, initiation and propagation, Flares, forecasting, relation to magnetic field, Sunspots, magnetic fields},
+        year = 2018,
+        month = apr,
+        volume = 293,
+        eid = {#60},
+        pages = {#60},
+        doi = {10.1007/s11207-018-1287-4},
+        adsurl = {http://adsabs.harvard.edu/abs/2018SoPh..293...60M},
+        adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+    }
+
 
 Code
 -------
