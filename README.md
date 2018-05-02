@@ -9,14 +9,17 @@ This repository contains the code and data used to compare the EU FP7 HELCATS an
 
     @ARTICLE{Murray2018,
                 author = {{Murray}, S.~A. and {Guerra}, J.~A. and {Zucca}, P. and {Park}, S.-H. and
-                           {Carley}, E.~P. and {Gallagher}, P.~T. and {Vilmer}, N. and
-                           {Bothmer}, V.},
-                title = "{Connecting Coronal Mass Ejections to Their Solar Active Region Sources: Combining Results from the HELCATS and FLARECAST Projects}",
+                          {Carley}, E.~P. and {Gallagher}, P.~T. and {Vilmer}, N. and
+                          {Bothmer}, V.},
+                title = "{Connecting Coronal Mass Ejections to Their Solar Active Region Sources: 
+                          Combining Results from the HELCATS and FLARECAST Projects}",
               journal = {\solphys},
         archivePrefix = "arXiv",
                eprint = {1803.06529},
          primaryClass = "astro-ph.SR",
-             keywords = {Active regions, magnetic fields, Coronal mass ejections, initiation and propagation, Flares, forecasting, relation to magnetic field, Sunspots, magnetic fields},
+             keywords = {Active regions, magnetic fields, Coronal mass ejections, initiation and 
+                         propagation, Flares, forecasting, relation to magnetic field, Sunspots, 
+                         magnetic fields},
                  year = 2018,
                 month = apr,
                volume = 293,
